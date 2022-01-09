@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "name": "restaurants",
+        "private": false
+    }
+]

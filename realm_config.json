@@ -1,7 +1,8 @@
 {
-    "app_id": "application-0-eowcm",
+    "app_id": "restaurant-reviews-hiism",
     "config_version": 20210101,
-    "name": "Application-0",
+    "name": "Restaurant-Reviews",
     "location": "US-VA",
-    "deployment_model": "LOCAL"
+    "deployment_model": "LOCAL",
+    "environment": "testing"
 }
