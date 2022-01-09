@@ -1,32 +1,60 @@
-import http from '../http-common.js'
-
 class RestaurantDataService {
-  getAll(page = 0) {
-    return http.get(`?page=${page}`);
+  static url = 'http://localhost:5000/api/v1/restaurants'
+
+  async getAll(page = 0) {
+    const response = await fetch(`${RestaurantDataService.url}?page=${page}`)
+    return response.json()
   }
 
-  get(id) {
-    return http.get(`/id/${id}`);
+  async get(id) {
+    const response = await fetch(`${RestaurantDataService.url}/id/${id}`)
+    return response.json()
   }
 
-  find(query, by = "name", page = 0) {
-    return http.get(`?${by}=${query}&page=${page}`);
+  async find(query, by = "name", page = 0) {
+    const response = await fetch(`${RestaurantDataService.url}?${by}=${query}&page=${page}`)
+    return response.json()
   } 
 
-  createReview(data) {
-    return http.post("reviews", data);
+  async createReview(data) {
+    const response = await fetch(
+      `${RestaurantDataService.url}/reviews`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }
+    )
+    return response.json()
   }
 
-  updateReview(data) {
-    return http.put("reviews", data);
+  async updateReview(data) {
+    const response = await fetch(
+      `${RestaurantDataService.url}/reviews`, 
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }
+    )
+    return response.json()
   }
 
-  deleteReview(id, userId) {
-    return http.delete(`reviews?id=${id}`, {data:{user_id: userId}});
+  async deleteReview(id, userId) {
+    const response = await fetch(
+      `${RestaurantDataService.url}/reviews?id=${id}`, 
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({user_id: userId})
+      }
+    )
+    return response.json()
   }
 
-  getCuisines(id) {
-    return http.get(`cuisines`);
+  async getCuisines(id) {
+    const response = await fetch(`${RestaurantDataService.url}/cuisines`)
+    return response.json()
   }
 }
 

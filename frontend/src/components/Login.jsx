@@ -10,9 +10,7 @@ const Login = ({ login }) => {
 
   const handleInputChange = e => {
     const { name, value } = e.target
-    console.log(name, value)
     setUser({ ...user, [name]: value })
-    console.log (user)
   }
 
   return (

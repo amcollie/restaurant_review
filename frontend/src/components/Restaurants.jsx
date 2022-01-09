@@ -15,12 +15,11 @@ const Restaurants = ({ user }) => {
 
   const getRestaurant = id => {
     RestaurantDataService.get(restaurant_id)
-      .then(response => {
-        setRestaurant(response.data)
-        console.log(response.data)
+      .then(data => {
+        setRestaurant(data)
       })
-      .catch(e => {
-        console.log(e)
+      .catch(err => {
+        console.log(err)
       })
   }
 
@@ -29,8 +28,10 @@ const Restaurants = ({ user }) => {
   }, [restaurant_id])
 
   const deleteReview = (reviewId, index) => {
+    
+    debugger
     RestaurantDataService.deleteReview(reviewId, user.id)
-      .then(response => {
+      .then(data => {
         setRestaurant(prevState => {
           prevState.reviews.splice(index, 1)
           return({
@@ -39,7 +40,7 @@ const Restaurants = ({ user }) => {
         })
       })
       .catch(err => {
-        consolerr.log(err)
+        console.log(err)
       })
   }
 

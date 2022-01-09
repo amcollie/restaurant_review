@@ -33,18 +33,16 @@ const AddReview = ({ user }) => {
     if (editing) {
       data.review_id = state.currentReview._id
       RestaurantDataService.updateReview(data)
-        .then(response => {
+        .then(data => {
           setSubmitted(true)
-          console.log(response.data)
         })
         .catch(err => {
           console.log(err)
         })
     } else {
       RestaurantDataService.createReview(data)
-        .then(response => {
+        .then(data => {
           setSubmitted(true)
-          console.log(response.data)
         })
         .catch(err => {
           console.log(err)
